@@ -1,18 +1,60 @@
 const express = require("express");
+const { createNewUser } = require("./utils/userOps");
+db = require("./db");
+require("dotenv").config();
 
 const app = express();
 const port = 3000;
 
-app.get("/api/", (req, res) => {
-  console.log("Bonjour, Mars");
+app.use(express.json()); // middlewere to parse incomming json.
+
+// TODO: (me) add authMiddlewere for protected routes.
+
+app.get("/api/", async (req, res) => {
+  const cookies = req.cookies;
+
+  console.log("Cookies: ", cookies);
+
+  const result = await db.query("SELECT * FROM users");
+  console.log(result.rows);
+
+  res.json(result.rows);
 });
 
 app.post("/api/login", (req, res) => {
   // TODO: (douae) Login endpoint.
 });
 
-app.post("/api/signup", (req, res) => {
-  // TODO: (ali) Siginup endpoint.
+app.post("/api/signup", async (req, res) => {
+  const data = req.body;
+  const { email } = data;
+
+  try {
+    // check for user in db using unique properties.
+    const { rows } = await db.query("SELECT * FROM users WHERE email = $1", [
+      email,
+    ]);
+
+    if (rows.length > 0) {
+      return res.status(409).send("User already exists");
+    }
+
+    const output = await createNewUser(data);
+
+    res.cookie("token", output.accessToken, {
+      httpOnly: true,
+      secure: false, // NOTE: flip this to true in production (HTTPS).
+      sameSite: "lax",
+      maxAge: 60 * 60 * 1000,
+    });
+
+    return res.status(output.status).send({
+      message: output.text,
+    });
+  } catch (err) {
+    console.error("DB query error: ", err);
+    res.status(500).send(err);
+  }
 });
 
 app.listen(port, () => {
