@@ -1,18 +1,17 @@
-const db = require("../db");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
+import db from "./db";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 require("dotenv").config();
 
 const secret_key = process.env.SECRET_KEY;
 
-//
-function generateToken(payload) {
+export function generateToken(payload) {
   const token = jwt.sign(payload, secret_key, { expiresIn: "1h" });
   return token;
 }
 
 // create new user in database.
-const createNewUser = async (userData) => {
+export const createNewUser = async (userData) => {
   // generate access token
   const accessToken = generateToken(userData);
   try {
@@ -52,9 +51,4 @@ const createNewUser = async (userData) => {
       text: "Someting went wrong, while creating new user!",
     };
   }
-};
-
-module.exports = {
-  createNewUser,
-  generateToken,
 };
