@@ -6,6 +6,9 @@ import signupHandler from "./utils/signup-handler.js";
 require("dotenv").config();
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 const port = 3000;
 
 app.use(express.json()); // middlewere to parse incomming json.
