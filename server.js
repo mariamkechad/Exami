@@ -1,14 +1,13 @@
-const express = require("express");
-const { createNewUser } = require("./utils/userOps");
-db = require("./db");
+import express from "express";
+import { authMiddleware } from "./utils/middlewares.js";
+import db from "./db";
+import { createNewUser } from "./utils/userOps";
 require("dotenv").config();
 
 const app = express();
 const port = 3000;
 
 app.use(express.json()); // middlewere to parse incomming json.
-
-// TODO: (me) add authMiddlewere for protected routes.
 
 app.get("/api/", async (req, res) => {
   const cookies = req.cookies;
