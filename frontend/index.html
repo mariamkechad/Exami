@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Formulaire d'inscription</title>
+</head>
+<body>
+
+  <h2>Formulaire d'inscription</h2>
+
+  <form>
+    <label for="userType">Type d'utilisateur</label>
+    <select id="userType" name="userType" required>
+      <option value=""> Sélectionner </option>
+      <option value="etudiant">Étudiant</option>
+      <option value="enseignant">Enseignant</option>
+    </select>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email"placeholder="xxxx@gmail.com" required>
+
+    <label for="nom">Nom</label>
+    <input type="text" id="nom" name="nom" placeholder="xxxx" required>
+
+    <label for="prenom">Prénom</label>
+    <input type="text" id="prenom" name="prenom" placeholder="xxxx" required>
+
+    <label for="dateNaissance">Date de naissance</label>
+    <input type="date" id="dateNaissance" name="dateNaissance" required>
+
+    <label for="sexe">Sexe</label>
+    <select id="sexe" name="sexe" required>
+      <option value="">Sélectionner</option>
+      <option value="homme">Homme</option>
+      <option value="femme">Femme</option>
+      <option value="autre">Autre</option>
+    </select>
+
+    <label for="etablissement">Établissement</label>
+    <select id="etablissement" name="etablissement" required>
+      <option value="">Sélectionner votre etablissement</option>
+      <option value="fs">FS</option>
+      <option value="ensa">ENSA</option>
+      <option value="ens">ENS</option>
+      <option value="fst">FST</option>
+      <option value="est">EST</option>
+      <option value="ensg">ENSG</option>
+    </select>
+    <label for="filiere">Filière</label>
+    <select id="filiere" name="filiere" required>
+      <option value="">Sélectionner votre filière</option>
+      <option value="SM">SM</small></option>
+      <option value="SMI">SMI</option>
+      <option value="SMA">SMA</option>
+      <option value="SMC">SMC</option>
+      <option value="SMP">SMP</option>
+      <option value="SVT">SVT</option>
+      <option value="BG">BG</option>
+      <option value="BIO">BIO</option>
+      <option value="CH">CH</option>
+      <option value="GEO">GRO</option>
+      <option value="PC">PC</option>
+      <option value="INFO">INFO</option>
+    </select>
+    
+    <button type="submit">S'inscrire</button>
+  </form>
+
+</body>
+</html>
