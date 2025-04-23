@@ -3,10 +3,12 @@ import { authMiddleware } from "./utils/middlewares.js";
 import signupHandler from "./utils/signup-handler.js";
 import loginHandler from "./utils/login-handler.js";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
+
 dotenv.config();
 
 const app = express();
-
+app.use(cookieParser());
 app.use(express.json()); // middlewere to parse incomming json.
 app.use(express.urlencoded({ extended: true }));
 
