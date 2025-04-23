@@ -1,7 +1,8 @@
-import db from "./db";
+import db from "../database/db.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 
 const secret_key = process.env.SECRET_KEY;
 

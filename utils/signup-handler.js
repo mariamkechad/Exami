@@ -1,4 +1,5 @@
-import { createNewUser } from "./userOps";
+import { createNewUser } from "./actions.js";
+
 const signupHandler = async (req, res) => {
   const data = req.body;
   const { email } = data;
