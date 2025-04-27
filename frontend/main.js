@@ -1,9 +1,10 @@
 // get all DOM elements, and sort them in order /sidebar/navbar/dynamic-preview
 const themeToggleButton = document.getElementById("theme-toggle");
-const htmlElement = document.documentElement;
 
 // theme toggling
-// TODO: save theme value in local storage.
+// TODO: (maryam)
+// - save theme value in local storage.
+// - support device based theme.
 const rootElement = document.documentElement;
 let darkMode = false;
 themeToggleButton.addEventListener("click", () => {
@@ -30,7 +31,6 @@ const registerFormContainer = document.getElementById(
 const getStarted = () => {
   startContainerElement.classList.add("hidden");
   registerFormContainer.classList.remove("hidden");
-
   const signupForm = document.getElementById("signup-form");
 
   signupForm.addEventListener("submit", (event) => {
@@ -41,10 +41,11 @@ const getStarted = () => {
     const data = Object.fromEntries(formData.entries());
 
     console.log("Form submitted! with this data: ", data);
-    //TODO: call signup() with data.
+    //TODO: (douae):
+    // - implement signup() function in ./client-actions.js.
+    // - call signup function with this "data".
   });
 };
 
 // call getStarted() function if the user clicks 'get started' or 'signup/login' buttons
 startButtonElement.addEventListener("click", getStarted);
-

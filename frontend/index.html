@@ -14,11 +14,6 @@
     <!-- </script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
     <!---->
-    <script>
-      tailwind.config = {
-        darkMode: "class",
-      };
-    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
@@ -32,27 +27,16 @@
     <script>
       // Configure Tailwind's dark mode to use class
       tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              // You can customize these colors if needed
-              primary: {
-                light: "#3b82f6",
-                dark: "#60a5fa",
-              },
-            },
-          },
-        },
+        darkMode: "class"
       };
     </script>
   </head>
-  <body class="h-screen font-kanit bg-slate-200 dark:bg-black p-1">
+  <body class="h-screen font-kanit bg-gray-100 dark:bg-black p-1">
     <main
-      class="w-full h-full flex flex-col font-kanit bg-slate-100 dark:bg-zinc-800 border border-slate-300 dark:border-zinc-700 rounded-lg text-black  dark:text-white"
+      class="w-full h-full flex flex-col font-kanit bg-white dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 rounded-lg text-black dark:text-white"
     >
       <!-- navebar -->
-      <nav class="w-full px-3 py-4 border-b border-slate-300 dark:border-zinc-700/50">
+      <nav class="w-full px-3 py-4 border-b border-gray-300/50 dark:border-zinc-700/50">
         <!-- logo "Exami" -->
         <!-- theme toggle button -->
         <!-- signup & login buttons -->
@@ -67,14 +51,14 @@
       <div class="flex-1 flex">
         <!-- sidebar: mybe we can put recent exams and some data there. -->
         <div
-          class="hidden md:inline h-full md:w-52 px-2 py-3 border-r border-slate-300 dark:border-zinc-700/50"
+          class="hidden md:inline h-full md:w-52 px-2 py-3 border-r border-gray-300/50 dark:border-zinc-700/50"
         >
           sidebar
           <!-- put the navigation here -->
           <!-- mention our names -->
         </div>
         <!-- dynamic preview -->
-        <section class="flex-1 border border-slate-300 bg-slate-200 dark:border-zinc-600 dark:bg-zinc-700 m-1 md:m-4">
+        <section class="flex-1 border border-gray-300/50 bg-white dark:border-zinc-700/50 dark:bg-zinc-800 m-1 md:m-6 xl:m-8">
           <div class="w-full h-full flex items-center justify-center">
             <div id="start-container" class="space-y-2 text-center">
               <h3 class="text-xl">Wellcome to Exami</h3>
@@ -88,24 +72,38 @@
             </div>
             <div id="register-form-container" class="hidden w-full h-full flex items-center justify-center"
             >
-            <form id="signup-form" class="max-w-xl border-4 border-yellow-500">
+            <form id="signup-form" class="space-y-1 w-full md:w-[550px] xl:w-[650px] text-black dark:text-zinc-300 flex flex-col px-6 py-4 rounded-sm border border-gray-300/50 dark:border-zinc-700/50 gap-2 bg-white dark:bg-zinc-800 focus:border-none focus:outline-none">
+              <div class="text-center text-2xl font-sora">Alerts</div>
+              <div class="flex flex-col sm:flex-row gap-3 lg:gap-4">
+                <div class="w-1/2 space-y-1">
+                  <label for="first-name" class="inline">First Name</label>
+                  <input class="w-full px-3 py-2 text-zinc-600 dark:text-zinc-300 border border-gray-300 bg-gray-200 dark:border-zinc-600 dark:bg-zinc-700 rounded-md" type="text" id="first-name" name="first-name" required>
+                </div>
+                <div class="w-1/2 space-y-1">
+                  <label for="last-name">Last Name</label>
+                  <input
+                    class="w-full px-3 py-2 text-zinc-600 dark:text-zinc-300 border border-slate-300 bg-gray-200 dark:border-zinc-600 dark:bg-zinc-700 rounded-md"
+                    type="text" id="last-name" name="last-name" required>
+                </div>
+              </div>
               <label for="email">Email</label>
-              <input type="email" id="email" name="email"placeholder="xxxx@gmail.com" required>
-              <label for="nom">Nom</label>
-              <input type="text" id="nom" name="nom" placeholder="xxxx" required>
-              <label for="prenom">Prénom</label>
-              <input type="text" id="prenom" name="prenom" placeholder="xxxx" required>
-              <label for="dateNaissance">Date de naissance</label>
-              <input type="date" id="dateNaissance" name="dateNaissance" required>
-              <label for="sexe">Sexe</label>
-              <select id="sexe" name="sexe" required>
-                <option value="">Sélectionner</option>
-                <option value="homme">Homme</option>
-                <option value="femme">Femme</option>
-                <option value="autre">Autre</option>
+              <input
+                class="px-3 py-2 text-zinc-600 dark:text-zinc-300 border border-gray-300 bg-gray-200 dark:border-zinc-600 dark:bg-zinc-700 rounded-md"
+                type="email" id="email" name="email"placeholder="eg. example@gmail.com" required>
+              <label for="dateNaissance">Date of birth</label>
+              <input
+                class="px-3 py-2 text-zinc-600 dark:text-zinc-300 border border-gray-300 bg-gray-200 dark:border-zinc-600 dark:bg-zinc-700 rounded-md"
+                type="date" id="dateNaissance" name="dateNaissance" required>
+              <label for="sexe">Gender</label>
+              <select
+                class="px-3 py-2 text-zinc-600 dark:text-zinc-300 border border-gray-300 bg-gray-200 dark:border-zinc-600 dark:bg-zinc-700 rounded-md"
+                <option value="">Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
               </select>
               <label for="etablissement">Établissement</label>
-              <select id="etablissement" name="etablissement" required>
+              <select
+                class="px-3 py-2 text-zinc-600 dark:text-zinc-300 border border-gray-300 bg-gray-200 dark:border-zinc-600 dark:bg-zinc-700 rounded-md"
                 <option value="">Sélectionner votre etablissement</option>
                 <option value="fs">FS</option>
                 <option value="ensa">ENSA</option>
@@ -115,7 +113,8 @@
                 <option value="ensg">ENSG</option>
               </select>
               <label for="filiere">Filière</label>
-              <select id="filiere" name="filiere" required>
+              <select
+                class="px-3 py-2 text-zinc-600 dark:text-zinc-300 border border-gray-300 bg-gray-200 dark:border-zinc-600 dark:bg-zinc-700 rounded-md"
                 <option value="">Sélectionner votre filière</option>
                 <option value="SM">SM</small></option>
                 <option value="SMI">SMI</option>
@@ -131,7 +130,9 @@
                 <option value="INFO">INFO</option>
               </select>
               <label for="userType" >Type d'utilisateur</label>
-              <select id="userType" name="userType" required>
+              <select
+                  class="px-3 py-2 text-zinc-600 dark:text-zinc-300 border border-slate-300 bg-slate-200 dark:border-zinc-600 dark:bg-zinc-700 rounded-md"
+                  id="userType" name="userType" required>
                 <option value=""> Sélectionner </option>
                 <option value="etudiant">Étudiant</option>
                 <option value="enseignant">Enseignant</option>
@@ -139,7 +140,7 @@
               <button
                 id="signup-button"
                 type="submit"
-                class="inline rounded-lg border border-emerald-600  bg-emerald-500 dark:border-violet-400 dark:bg-violet-500 text-white px-3 py-1 focus:outline-none"
+                class="rounded-full border border-emerald-600  bg-emerald-500 dark:border-violet-400 dark:bg-violet-500 text-white py-2 focus:outline-none mt-2 md:mt-4 xl:mt-6"
               >
                 Sign Up
               </button>
@@ -149,6 +150,6 @@
         </section>
       </div>
     </main>
-    <script src="main.js"></script>
+    <script type="module" src="main.js"></script>
   </body>
 </html>
