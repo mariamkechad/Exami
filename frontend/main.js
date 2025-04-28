@@ -1,51 +1,37 @@
-// get all DOM elements, and sort them in order /sidebar/navbar/dynamic-preview
-const themeToggleButton = document.getElementById("theme-toggle");
+import { showStartPage, showSignupForm } from "./previews.js";
+
+// main changing part of index html page:
+const dynamicPreview = document.getElementById("dynamic-preview");
+console.log("dyanmic preview is : ", dynamicPreview);
+// dyanmic preview with starter page.
+const startButton = showStartPage(dynamicPreview);
+
+startButton.addEventListener("click", () => {
+  showSignupForm(dynamicPreview);
+});
 
 // theme toggling
 // TODO: (maryam)
 // - save theme value in local storage.
 // - support device based theme.
-const rootElement = document.documentElement;
-let darkMode = false;
-themeToggleButton.addEventListener("click", () => {
-  darkMode = !darkMode;
+function changeTheme() {
+  const themeToggleButton = document.getElementById("theme-toggle");
+  const rootElement = document.documentElement;
 
-  if (darkMode) {
-    rootElement.classList.add("dark");
-    themeToggleButton.innerHTML = `<i class="fa-regular fa-sun"></i>`;
-  } else {
-    rootElement.classList.remove("dark");
-    themeToggleButton.innerHTML = `
+  let darkMode = false;
+  themeToggleButton.addEventListener("click", () => {
+    darkMode = !darkMode;
+
+    if (darkMode) {
+      rootElement.classList.add("dark");
+      themeToggleButton.innerHTML = `<i class="fa-regular fa-sun"></i>`;
+    } else {
+      rootElement.classList.remove("dark");
+      themeToggleButton.innerHTML = `
   <i class="fa-solid fa-moon"></i>
   `;
-  }
-});
-
-// start the experince:
-const startButtonElement = document.getElementById("start-button");
-const startContainerElement = document.getElementById("start-container");
-const registerFormContainer = document.getElementById(
-  "register-form-container",
-);
-
-const getStarted = () => {
-  startContainerElement.classList.add("hidden");
-  registerFormContainer.classList.remove("hidden");
-  const signupForm = document.getElementById("signup-form");
-
-  signupForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const formData = new FormData(signupForm);
-
-    const data = Object.fromEntries(formData.entries());
-
-    console.log("Form submitted! with this data: ", data);
-    //TODO: (douae):
-    // - implement signup() function in ./client-actions.js.
-    // - call signup function with this "data".
+    }
   });
-};
+}
 
-// call getStarted() function if the user clicks 'get started' or 'signup/login' buttons
-startButtonElement.addEventListener("click", getStarted);
+changeTheme();
