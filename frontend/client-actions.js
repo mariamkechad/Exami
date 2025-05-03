@@ -1,5 +1,5 @@
 // signup endpoint
-export const signup = () => {
+export const signup = (data) => {
   console.log("Sign up...");
 };
 // login endpoint
