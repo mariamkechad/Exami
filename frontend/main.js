@@ -32,20 +32,23 @@ function renderAlerts(info) {
 function changeTheme() {
   const themeToggleButton = document.getElementById("theme-toggle");
   const rootElement = document.documentElement;
+  const switchButton = document.getElementById("switch-button");
 
   let darkMode = true;
   rootElement.classList.add("dark");
-  themeToggleButton.innerHTML = `<i class="fa-regular fa-sun"></i>`;
+  // switchButton.innerHTML = `<i class="fa-regular fa-sun"></i>`;
 
   themeToggleButton.addEventListener("click", () => {
     darkMode = !darkMode;
 
     if (darkMode) {
       rootElement.classList.add("dark");
-      themeToggleButton.innerHTML = `<i class="fa-regular fa-sun"></i>`;
+      themeToggleButton.classList.add("justify-end");
+      // switchButton.innerHTML = `<i class="fa-regular fa-sun"></i>`;
     } else {
       rootElement.classList.remove("dark");
-      themeToggleButton.innerHTML = `<i class="fa-solid fa-moon"></i>`;
+      themeToggleButton.classList.remove("justify-end");
+      // switchButton.innerHTML = `<i class="fa-solid fa-moon"></i>`;
     }
   });
 }
