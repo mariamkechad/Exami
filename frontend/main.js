@@ -1,31 +1,50 @@
-import { showStartPage, showSignupForm, showLoginForm } from "./previews.js";
+import { initRouter, navigateTo } from "./utils/router.js";
+import { renderPreview } from "./previews.js";
 
-// main changing part of index html page:
-const dynamicPreview = document.getElementById("dynamic-preview");
-
-// dyanmic preview with starter page.
-const startButton = showStartPage(dynamicPreview);
-
-startButton.addEventListener("click", async () => {
-  const signupStatusPromise = showSignupForm(dynamicPreview);
-  const signupStatus = await signupStatusPromise;
-
-  renderAlerts(signupStatus);
-
-  if (signupStatus.alertType === "Sccess") {
-  }
-  const loginStatusPromise = showLoginForm(dynamicPreview);
-  const loginStatus = await loginStatusPromise;
-  renderAlerts(loginStatus);
-});
-
-// toggle between singup and login;
-function toggleAuthForms(prevForm) {}
+// const startButton = showStartPage(dynamicPreview);
+//
+// let loginStatus;
+// startButton.addEventListener("click", async () => {
+//   const signupStatusPromise = showSignupForm(dynamicPreview);
+//   const signupStatus = await signupStatusPromise;
+//
+//   renderAlert(signupStatus);
+//   if (signupStatus.alertType === "Success") {
+//     const loginStatusPromise = showLoginForm(dynamicPreview);
+//     loginStatus = await loginStatusPromise;
+//   }
+//
+//   console.log("login status are : ", loginStatus);
+//
+//   renderAlert(loginStatus);
+//
+//   if (loginStatus.logedIn) {
+//     if (loginStatus.userInfo.role === "teacher") {
+//       teacherDashboard(dynamicPreview);
+//     } else {
+//       teacherDashboard(dynamicPreview);
+//     }
+//   }
+// });
 
 // render alerts ui inside navbar.
-function renderAlerts(info) {
+export function renderAlert(message, type) {
   const alertsElement = document.getElementById("alerts");
-  alertsElement.textContent = info.alertMessage;
+
+  const alertClass =
+    type === "error"
+      ? "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
+      : type === "success"
+        ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+        : "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200";
+
+  alertsElement.className = `inline-block px-4 py-2 rounded ${alertClass}`;
+  alertsElement.textContent = message;
+
+  setTimeout(() => {
+    alertsElement.className = "hidden";
+    alertsElement.textContent = "";
+  }, 3000);
 }
 
 // light/dark modes
@@ -53,5 +72,13 @@ function changeTheme() {
   });
 }
 
-changeTheme();
+function startExami() {
+  changeTheme();
+  initRouter();
 
+  // check if hash exist in url "like #about"  if not path is "/home"
+  const path = window.location.hash.substring(1) || "/home";
+  navigateTo(path);
+}
+
+document.addEventListener("DOMContentLoaded", startExami);

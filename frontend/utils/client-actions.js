@@ -63,15 +63,36 @@ export const login = async (data) => {
 
     console.log("result is : ", result);
 
+    if (result.isLogedIn) {
+      localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("userType", result.user.type);
+    }
+
     return {
       alertMessage: result.message,
       alertType: "Success",
+      logedIn: result.isLogedIn,
+      userInfo: result.user,
     };
   } catch (e) {
     console.log("Error while loging in!");
     console.error("error login in : ", e);
   }
 };
+
+// auth funcitons:
+export function isLoggedIn() {
+  return localStorage.getItem("isLoggedIn") === "true";
+}
+
+export function getUserType() {
+  return localStorage.getItem("userType") || "guest"; // fallback
+}
+
+// TODO: (douae):
+// logout user
+// remove user form the localstorage
+export const logout = () => {};
 
 export const getGithubProfiles = () => {
   // TODO: (maryam):
