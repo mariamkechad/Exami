@@ -72,8 +72,6 @@ function changeTheme() {
   });
 }
 
-changeTheme();
-
 function startExami() {
   changeTheme();
   initRouter();

@@ -24,6 +24,7 @@ const app = express();
 app.use(cookieParser());
 app.use(express.json()); // middlewere to parse incomming json.
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static('js-projet'));
 
 // app.use(globalAuthMiddleware);
 
