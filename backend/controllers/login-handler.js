@@ -8,7 +8,7 @@ const loginHandler = async (req, res) => {
     const { email, password, type } = data;
 
     const { rows } = await db.query(
-      "SELECT email, password FROM users WHERE email = $1 AND type = $2",
+      "SELECT * FROM users WHERE email = $1 AND type = $2",
       [email, type],
     );
 
@@ -27,7 +27,7 @@ const loginHandler = async (req, res) => {
       });
     }
 
-    const token = generateToken({ email, role: type }); // generate jwt using email for now.
+    const token = generateToken({ email, userId: rows[0].id, role: type }); // generate jwt using email for now.
 
     console.log("token is : ", token);
 
@@ -41,6 +41,7 @@ const loginHandler = async (req, res) => {
     return res.status(200).send({
       message: "Logged in successfuly!",
       isLogedIn: true,
+      user: rows[0],
     });
   } catch (err) {
     console.error("error login endpoit, errror : ", err);
