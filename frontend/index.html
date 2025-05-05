@@ -29,28 +29,44 @@
     >
       <!-- navebar -->
       <nav
-        class="w-full px-3 py-4 border-b border-gray-300/50 dark:border-zinc-700/50"
+        class="w-full px-3 py-4 border-b border-gray-300/50 dark:border-zinc-700/50 border"
       >
         <!-- TODO: (douae) -->
         <!-- logo "Exami" -->
-        <!-- theme toggle button -->
         <!-- signup & login buttons -->
         <!-- alerts in the middle: ("xsign up seccussfully", "user already exists"...) -->
-        <!-- logo "Exami" -->
-        <button
-          id="theme-toggle"
-          class="size-8 rounded-lg border border-emerald-600 bg-emerald-500 dark:border-violet-400 dark:bg-violet-500 text-white focus:outline-none"
+        <div
+          id="alerts"
+          class="inline w-full text-center py-1 px-3 bg-white/50 rounded-lg"
         >
-          <i class="fa-solid fa-moon"></i>
-        </button>
+          test
+        </div>
       </nav>
       <div class="flex-1 flex">
         <!-- sidebar: mybe we can put recent exams and some data there. -->
         <div
-          class="hidden md:inline h-full md:w-52 px-2 py-3 border-r border-gray-300/50 dark:border-zinc-700/50"
+          class="hidden md:flex flex-col h-full md:w-52 px-2 py-6 border-r border-gray-300/50 dark:border-zinc-700/50"
         >
           <!-- TODO: (maryam) -->
           <!-- put the navigation (links) here which well conrol the preview -->
+
+          <!--theme toggle -->
+          <div class="flex-1"></div>
+          <div
+            class="w-full font-sora font-light text-sm flex flex-row items-center justify-center gap-2 text-zinc-500 dark:text-zinc-200"
+          >
+            <span> Light </span>
+            <button
+              id="theme-toggle"
+              class="w-12 p-[3px] flex flex-row items-center justify-end rounded-full bg-black dark:bg-white focus:outline-none"
+            >
+              <span
+                id="switch-button"
+                class="h-4 w-4 rounded-full bg-white dark:bg-black"
+              />
+            </button>
+            <span> Dark </span>
+          </div>
           <!-- mention our names -->
         </div>
         <!-- dynamic preview -->
